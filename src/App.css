@@ -2,3 +2,6 @@
   overflow: hidden;
   display: none;
 }
+* {
+  margin: 0;
+}

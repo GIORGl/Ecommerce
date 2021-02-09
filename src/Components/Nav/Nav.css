@@ -6,7 +6,7 @@
   /* box-shadow: 0 4px 2px -2px gray; */
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 999;
   width: 99vw;
   background-color: #333;
 }
@@ -29,5 +29,20 @@ form input {
 }
 
 label {
+  color: white;
+}
+.nav__basket {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.basket__icon {
+  object-fit: contain !important;
+  font-size: 100px;
+  color: white;
+}
+span {
+  font-size: 20px;
+  padding-left: 10px;
   color: white;
 }

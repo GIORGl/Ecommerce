@@ -1,24 +1,43 @@
-import React, { useEffect } from 'react';
-import './Nav.css'
+import React, { useEffect, useRef, useState, useContext } from "react";
+import "./Nav.css";
+import { Link } from "react-router-dom";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import { ProductContext } from "../../ProductCategoryContext";
+import { useStateValue } from "../../StateProvider";
+
+
 function Nav() {
-    return (
-        <div className="nav">
-    <img src="logo.png" alt="shop logo"/>
-    <select className="nav__select">
+  const [ {basket} ] = useStateValue();
+  console.log(`basket>>>${basket}`)
+  const [category, setCategory] = useState("all");
+  return (
+    <div className="nav">
+      <Link to="/">
+        <img src="logo.png" alt="shop logo" />
+      </Link>
+
+      <select
+        onChange={(e) => {
+          setCategory(e.target.value);
+          console.log(category);
+        }}
+        className="nav__select"
+      >
         <option value="all">All</option>
         <option value="electronics">Electronics</option>
         <option value="jewelery">Jewelery</option>
         <option value="men clothing">Clothing(Men)</option>
         <option value="women clothing">Clothing(Women)</option>
-    </select>
-    <form >
-        <label htmlFor="from">From:</label>
-        <input id='from' type="number"/>
-        <label htmlFor="to">to</label>
-        <input id='to' type='number'/>
-    </form>
-        </div>
-    )
+      </select>
+<Link to='/checkout'>
+<div className="nav__basket">
+        <ShoppingBasketIcon className="basket__icon" />
+        <span>{basket?.length}</span>
+      </div>
+</Link>
+     
+    </div>
+  );
 }
 
-export default Nav
+export default Nav;
